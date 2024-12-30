@@ -4,31 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawle Bank</title>
+    <link rel="icon" type="image/png" href="/images/logo-blue.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script defer src="scripts.js"></script>
 </head>
 <body>
-    <!-- Navegação com Logo -->
-    <header>
-        <nav class="navbar">
-            <!-- Logo à esquerda -->
-            <div class="nav-left">
-                <img src="images/logo.png" alt="Logo Hawle" class="logo">
-            </div>
-            <!-- Menu à direita -->
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Produtos</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+   <!-- Tela inicial -->
+<div class="intro-screen">
+    <div class="intro-content">
+        <a href="#" class="intro-logo-link">
+            <img src="images/logo-white.png" alt="Logo Hawle" class="intro-logo">
+        </a>
+        <ul class="intro-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
+</div>
+
+<header>
+    <nav class="navbar">
+        <!-- Botão de menu hambúrguer (somente para mobile) -->
+        <button class="hamburger" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- Logo -->
+        <div class="nav-left">
+            <img src="images/logo-white.png" alt="HW Logo" class="logo">
+        </div>
+        
+        <!-- Menu principal (desktop e mobile) -->
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        
+        <!-- Ícones adicionais -->
+        <div class="nav-icons">
+            <img src="images/search-icon.png" alt="Search Icon">
+            <img src="images/user-icon.png" alt="User Icon">
+            <img src="images/phone-icon.png" alt="Phone Icon">
+        </div>
+    </nav>
     
+    <!-- Overlay do menu mobile -->
+    <div class="menu-overlay">
+        <ul class="nav-links mobile">
+            <li><a href="#inicio" class="inicio-link">Início</a></li> <!-- Novo link para "Início" -->
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
+</header>
+
 
     <!-- Carrossel -->
     <section class="carousel">
@@ -44,9 +81,9 @@
             </div>
         </div>
         <div class="carousel-controls">
-            <button class="prev-slide">❮</button>
-            <button class="next-slide">❯</button>
-        </div>
+            <button class="prev-slide">&larr;</button> <!-- Seta para a esquerda -->
+            <button class="next-slide">&rarr;</button> <!-- Seta para a direita -->
+        </div>        
     </section>
 
     <!-- Seção de Credibilidade -->
@@ -87,7 +124,9 @@
         <div class="container">
             <div class="contact-content">
                 <h2>Entre em Contato</h2>
-                <p>Estamos aqui para ajudá-lo. Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
+                <p class="form-description">
+                    Estamos aqui para ajudá-lo. Preencha o formulário abaixo e entraremos em contato o mais breve possível.
+                </p>
                 <form class="contact-form">
                     <input type="text" placeholder="Seu nome" required>
                     <input type="email" placeholder="Seu e-mail" required>
@@ -98,32 +137,29 @@
             </div>
         </div>
     </section>
+    
 
     <section class="social-media">
         <h3>Siga-nos nas redes sociais</h3>
         <div class="social-icons">
-            <a href="https://www.instagram.com" target="_blank" title="Instagram">
+            <a href="https://www.instagram.com/paulorohdenjr" target="_blank" title="Instagram">
                 <img src="images/instagram-icon.png" alt="Instagram">
             </a>
-            <a href="https://www.twitter.com" target="_blank" title="X (Twitter)">
+            <a href="https://www.twitter.com/rowhden" target="_blank" title="X (Twitter)">
                 <img src="images/twitter-icon.png" alt="X (Twitter)">
             </a>
-            <a href="https://www.linkedin.com" target="_blank" title="LinkedIn">
+            <a href="https://www.linkedin.com/in/paulo-rohden/" target="_blank" title="LinkedIn">
                 <img src="images/linkedin-icon.png" alt="LinkedIn">
             </a>
-            <a href="https://www.tiktok.com" target="_blank" title="TikTok">
+            <a href="https://www.tiktok.com/rowhden" target="_blank" title="TikTok">
                 <img src="images/tiktok-icon.png" alt="TikTok">
             </a>
         </div>
-    </section>    
-    
+    </section>
 
     <!-- Rodapé -->
     <footer>
         <p>&copy; 2024 Hawle Bank. Todos os direitos reservados.</p>
     </footer>
-
-    <!-- Script do Carrossel -->
-    <script src="scripts.js"></script>
 </body>
 </html>
