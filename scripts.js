@@ -1,51 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const introScreen = document.querySelector('.intro-screen');
-    const header = document.querySelector('header');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const hamburger = document.querySelector('.hamburger');
-    const menuOverlay = document.querySelector('.menu-overlay');
-    const logoLinks = document.querySelectorAll('.logo-link, .intro-logo-link');
-    const logo = document.querySelector('.logo');
-    const navIcons = document.querySelectorAll('.nav-icons img');
-    const navbar = document.querySelector('.navbar');
-    const body = document.body;
-    const menuInicio = document.querySelector('.menu-overlay .inicio-link');
-    let introHidden = false;
+    const introScreen = document.querySelector('.intro-screen'); // Tela inicial
+    const header = document.querySelector('header'); // Cabeçalho fixo
+    const navLinks = document.querySelectorAll('.nav-links a'); // Links do menu fixo
+    const hamburger = document.querySelector('.hamburger'); // Botão hambúrguer (mobile)
+    const menuOverlay = document.querySelector('.menu-overlay'); // Overlay do menu (mobile)
+    const logoLinks = document.querySelectorAll('.logo-link, .intro-logo-link'); // Links da logo
+    const logo = document.querySelector('.logo'); // Logo principal
+    const navIcons = document.querySelectorAll('.nav-icons img'); // Ícones da navbar
+    const navbar = document.querySelector('.navbar'); // Navbar principal
+    const body = document.body; // Corpo da página
+    const menuInicio = document.querySelector('.menu-overlay .inicio-link'); // Link do menu hambúrguer "Início"
+    const carouselContainer = document.querySelector('.carousel-container'); // Container do carrossel
+    const carouselSlides = document.querySelectorAll('.carousel-slide'); // Slides do carrossel
+    const prevButton = document.querySelector('.prev-slide'); // Botão anterior
+    const nextButton = document.querySelector('.next-slide'); // Botão próximo
+    let currentSlide = 0; // Slide atual
+    let introHidden = false; // Controle para a tela inicial
 
-    // Carousel variables
-    const carouselContainer = document.querySelector('.carousel-container');
-    const carouselSlides = document.querySelectorAll('.carousel-slide');
-    const prevButton = document.querySelector('.prev-slide');
-    const nextButton = document.querySelector('.next-slide');
-    let currentSlide = 0;
-
-    // Function to hide the intro screen
+    // Função para esconder a tela inicial e mostrar o cabeçalho fixo
     function hideIntroScreen() {
         if (introScreen) {
-            introScreen.classList.add('hidden');
+            introScreen.classList.add('hidden'); // Esconde a tela inicial
         }
         if (header) {
-            header.classList.add('show');
+            header.classList.add('show'); // Mostra o cabeçalho fixo
         }
-        navLinks.forEach(link => (link.style.display = 'flex'));
-        introHidden = true;
+        navLinks.forEach(link => (link.style.display = 'flex')); // Garante que os links fiquem visíveis
+        introHidden = true; // Marca como escondido
     }
 
-    // Update navbar on scroll
+    // Atualiza a navegação com base no scroll
     function updateNavbarOnScroll() {
         const scrollY = window.scrollY;
 
         if (navbar) {
             if (scrollY > 50) {
-                navbar.classList.remove('scrolled');
-                navbar.style.backgroundColor = '#fff';
-                if (logo) logo.src = 'images/logo-dark.png';
-                if (hamburger) {
-                    hamburger.querySelectorAll('span').forEach(span => (span.style.background = '#000'));
-                }
-                navLinks.forEach(link => (link.style.color = '#000'));
-                navIcons.forEach(icon => (icon.style.filter = 'invert(0)'));
-            } else {
                 navbar.classList.add('scrolled');
                 navbar.style.backgroundColor = '#002BB5';
                 if (logo) logo.src = 'images/logo-white.png';
@@ -54,86 +43,108 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 navLinks.forEach(link => (link.style.color = '#fff'));
                 navIcons.forEach(icon => (icon.style.filter = 'invert(1)'));
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.style.backgroundColor = '#fff';
+                if (logo) logo.src = 'images/logo-dark.png';
+                if (hamburger) {
+                    hamburger.querySelectorAll('span').forEach(span => (span.style.background = '#000'));
+                }
+                navLinks.forEach(link => (link.style.color = '#000'));
+                navIcons.forEach(icon => (icon.style.filter = 'invert(0)'));
             }
         }
         if (scrollY > 0.2 && !introHidden) hideIntroScreen();
     }
 
-    // Carousel functions
+    // Atualiza o carrossel
     function updateCarousel() {
-        const offset = -currentSlide * 100; // Calculate the offset for the current slide
+        const offset = -currentSlide * 100;
         carouselContainer.style.transform = `translateX(${offset}%)`;
     }
 
+    // Mostra o próximo slide
     function showNextSlide() {
-        currentSlide = (currentSlide + 1) % carouselSlides.length; // Loop back to the first slide
+        currentSlide = (currentSlide + 1) % carouselSlides.length;
         updateCarousel();
     }
 
+    // Mostra o slide anterior
     function showPrevSlide() {
-        currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length; // Loop back to the last slide
+        currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length;
         updateCarousel();
     }
 
-    // Auto-play functionality
+    // Inicia o autoplay do carrossel
     function autoPlayCarousel() {
-        setInterval(showNextSlide, 5000); // Change slides every 5 seconds
+        setInterval(showNextSlide, 5000); // Altera slides a cada 5 segundos
     }
 
-    // Event listeners for carousel controls
-    if (nextButton) nextButton.addEventListener('click', showNextSlide);
-    if (prevButton) prevButton.addEventListener('click', showPrevSlide);
-
-    // Start auto-play
-    autoPlayCarousel();
-
-    // Hamburger menu toggle
+    // Botão hambúrguer no mobile
     if (hamburger && menuOverlay) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menuOverlay.classList.toggle('active');
-            body.classList.toggle('no-scroll');
+            body.classList.toggle('no-scroll'); // Adiciona ou remove a classe no-scroll
+
+            // Garante visibilidade dos links no menu mobile
+            if (menuOverlay.classList.contains('active')) {
+                navLinks.forEach(link => link.style.display = 'block'); // Exibe os links no menu mobile
+            } else {
+                navLinks.forEach(link => link.style.display = 'none'); // Esconde os links quando o menu é fechado
+            }
         });
     }
 
-    // Resize event
+    // Garantir visibilidade do menu correto ao redimensionar
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 769) {
-            navLinks.forEach(link => (link.style.display = 'flex'));
-            if (menuOverlay) menuOverlay.classList.remove('active');
-            if (hamburger) hamburger.classList.remove('active');
-            body.classList.remove('no-scroll');
+            navLinks.forEach(link => link.style.display = 'flex'); // Exibe os links no desktop
+            if (menuOverlay) {
+                menuOverlay.classList.remove('active'); // Reseta o overlay
+            }
+            if (hamburger) {
+                hamburger.classList.remove('active'); // Reseta o botão hambúrguer
+            }
+            body.classList.remove('no-scroll'); // Reativa o scroll
         } else {
-            navLinks.forEach(link => (link.style.display = 'none'));
+            navLinks.forEach(link => link.style.display = 'none'); // Esconde os links no mobile
         }
     });
 
-    // Initial configuration
+    // Configuração inicial para garantir que o menu está correto na primeira carga
     if (window.innerWidth >= 769) {
-        navLinks.forEach(link => (link.style.display = 'flex'));
+        navLinks.forEach(link => link.style.display = 'flex'); // Exibe os links no desktop
     } else {
-        navLinks.forEach(link => (link.style.display = 'none'));
+        navLinks.forEach(link => link.style.display = 'none'); // Esconde os links no mobile
     }
 
-    // Scroll to top on logo click
+    // Evento para logo principal levar ao topo da página
     if (logo) {
-        logo.addEventListener('click', e => {
+        logo.addEventListener('click', (e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Volta ao topo da página
         });
     }
 
-    // Scroll to top on "Início" link click
+    // Evento para link "Início" no menu mobile
     if (menuInicio) {
-        menuInicio.addEventListener('click', e => {
+        menuInicio.addEventListener('click', (e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            menuOverlay.classList.remove('active');
-            hamburger.classList.remove('active');
-            body.classList.remove('no-scroll');
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Volta ao topo da página
+            menuOverlay.classList.remove('active'); // Fecha o menu hambúrguer
+            hamburger.classList.remove('active'); // Reseta o botão hambúrguer
+            body.classList.remove('no-scroll'); // Reativa o scroll
         });
     }
 
-    // Scroll event
+    // Eventos de controle do carrossel
+    if (nextButton) nextButton.addEventListener('click', showNextSlide);
+    if (prevButton) prevButton.addEventListener('click', showPrevSlide);
+
+    // Inicia o autoplay do carrossel
+    autoPlayCarousel();
+
+    // Evento de scroll
     window.addEventListener('scroll', updateNavbarOnScroll);
 });

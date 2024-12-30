@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página em Obras</title>
+    <link rel="icon" type="image/png" href="/images/logo-blue.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Página em Obras -->
+    <header>
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="nav-left">
+                <img src="../images/logo-white.png" alt="Logo Hawle Bank" class="logo">
+            </div>
+            <!-- Menu principal -->
+            <ul class="nav-links">
+                <li><a href="../index.html">Início</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="em-obras">
+        <div class="container">
+            <div class="content">
+                <img src="../images/construction-icon.png" alt="Ícone de Construção" class="construction-icon">
+                <h1>Estamos em Obras</h1>
+                <p>Estamos trabalhando para disponibilizar esta página o mais rápido possível. Obrigado pela sua paciência!</p>
+                <a href="../index.html" class="btn">Voltar para a Página Inicial</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Hawle Bank. Todos os direitos reservados.</p>
+    </footer>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #002BB5;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            max-height: 50px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .em-obras {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            flex: 1;
+        }
+
+        .construction-icon {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #002BB5;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #002BB5;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #001F8D;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #002BB5;
+            color: #fff;
+            padding: 10px 0;
+        }
+    </style>
+</body>
+</html>

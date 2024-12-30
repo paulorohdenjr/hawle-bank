@@ -612,46 +612,48 @@ footer p {
     }
 
     /* Menu móvel em tela cheia */
-    .menu-overlay {
-        display: none; /* Oculto por padrão */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--color-bg); /* Fundo azul */
-        z-index: 1500;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: opacity 0.3s ease-in-out;
-    }
+  /* Menu móvel */
+.menu-overlay {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg); /* Fundo azul */
+    z-index: 1500;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
+}
 
-    .menu-overlay.active {
-        display: flex; /* Mostra o menu quando ativo */
-        opacity: 1;
-    }
+.menu-overlay.active {
+    display: flex; /* Mostra o menu quando ativo */
+    opacity: 1;
+}
 
-    /* Estilo dos links no menu móvel */
-    .menu-overlay .nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 20px; /* Espaçamento entre links */
-        text-align: center;
-    }
+/* Links do menu móvel */
+.menu-overlay .nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 0;
+}
 
-    .menu-overlay .nav-links a {
-        color: var(--color-white);
-        font-size: 1.5rem; /* Tamanho maior para destacar no mobile */
-        font-weight: bold;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
+.menu-overlay .nav-links a {
+    color: var(--color-white);
+    font-size: 1.5rem; /* Tamanho maior para o mobile */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-    .menu-overlay .nav-links a:hover {
-        color: #FFDD00; /* Destaque ao passar o mouse */
-    }
-
+.menu-overlay .nav-links a:hover {
+    color: #FFDD00; /* Destaque ao passar o mouse */
+}
     /* Ícones no mobile */
     .nav-right {
         display: none; /* Esconde ícones no mobile */
@@ -662,6 +664,48 @@ footer p {
         position: absolute; /* Garante alinhamento fixo */
     }
 }
+
+/* Slogan */
+.intro-slogan {
+    color: var(--color-white);
+    font-size: 1.2rem; /* Reduzindo o tamanho da fonte */
+    margin: 10px 0; /* Diminuindo o espaçamento abaixo da logo */
+    font-weight: 400;
+    text-align: center;
+}
+
+/* Indicador de scroll */
+.scroll-indicator {
+    margin-top: 40px; /* Aumentando a distância da seta para os links */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-indicator .arrow {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: solid var(--color-white);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    animation: bounce 1.5s infinite;
+}
+
+/* Animação da seta */
+@keyframes bounce {
+    0% {
+        transform: rotate(45deg) translateY(0);
+    }
+    50% {
+        transform: rotate(45deg) translateY(10px);
+    }
+    100% {
+        transform: rotate(45deg) translateY(0);
+    }
+}
+
+
 
 
 @media (min-width: 769px) {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawle Bank</title>
-    <link rel="icon" type="image/png" href="/images/logo-blue.png">
+    <link rel="icon" type="image/png" href="images/logo-blue.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,14 +15,20 @@
    <!-- Tela inicial -->
 <div class="intro-screen">
     <div class="intro-content">
-        <a href="#" class="intro-logo-link">
+        <a href="index.html" class="intro-logo-link">
             <img src="images/logo-white.png" alt="Logo Hawle" class="intro-logo">
         </a>
+        <!-- Adicionando o slogan -->
+        <p class="intro-slogan">Conectando você ao futuro financeiro.</p>
         <ul class="intro-links">
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="pages/em-obras.html">Sobre</a></li>
+            <li><a href="pages/em-obras.html">Produtos</a></li>
+            <li><a href="pages/em-obras.html">Contato</a></li>
         </ul>
+        <!-- Adicionando a seta animada -->
+        <div class="scroll-indicator">
+            <span class="arrow"></span>
+        </div>
     </div>
 </div>
 
@@ -37,37 +43,38 @@
         
         <!-- Logo -->
         <div class="nav-left">
-            <img src="images/logo-white.png" alt="HW Logo" class="logo">
+            <a href="index.html">
+                <img src="images/logo-white.png" alt="HW Logo" class="logo">
+            </a>
         </div>
         
-        <!-- Menu principal (desktop e mobile) -->
+        <!-- Menu principal (aparece no desktop) -->
         <ul class="nav-links">
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="pages/em-obras.html">Sobre</a></li>
+            <li><a href="pages/em-obras.html">Produtos</a></li>
+            <li><a href="pages/em-obras.html">Contato</a></li>
         </ul>
         
-        <!-- Ícones adicionais -->
+        <!-- Ícones adicionais (desktop) -->
         <div class="nav-icons">
-            <img src="images/search-icon.png" alt="Search Icon">
-            <img src="images/user-icon.png" alt="User Icon">
-            <img src="images/phone-icon.png" alt="Phone Icon">
+            <a href="pages/em-obras.html"><img src="images/search-icon.png" alt="Search Icon"></a>
+            <a href="pages/em-obras.html"><img src="images/user-icon.png" alt="User Icon"></a>
+            <a href="pages/em-obras.html"><img src="images/phone-icon.png" alt="Phone Icon"></a>
         </div>
     </nav>
     
     <!-- Overlay do menu mobile -->
     <div class="menu-overlay">
         <ul class="nav-links mobile">
-            <li><a href="#inicio" class="inicio-link">Início</a></li> <!-- Novo link para "Início" -->
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#produtos">Produtos</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="index.html" class="inicio-link">Início</a></li>
+            <li><a href="pages/em-obras.html">Sobre</a></li>
+            <li><a href="pages/em-obras.html">Produtos</a></li>
+            <li><a href="pages/em-obras.html">Contato</a></li>
         </ul>
     </div>
 </header>
 
-
-    <!-- Carrossel -->
+<!-- Carrossel -->
 <section class="carousel" aria-label="Galeria de imagens">
     <div class="carousel-container">
         <!-- Slides -->
@@ -96,81 +103,79 @@
     </div>
 </section>
 
+<!-- Seção de Credibilidade -->
+<section class="credibility">
+    <div class="container">
+        <h2>Confiança e Segurança</h2>
+        <p>Na Hawle Bank, priorizamos a segurança e a confiança de nossos clientes.</p>
+        <div class="credibility-images">
+            <img src="images/security.jpg" alt="Segurança">
+            <img src="images/trust.jpg" alt="Confiança">
+            <img src="images/support.jpeg" alt="Suporte">
+        </div>
+    </div>
+</section>
 
-    <!-- Seção de Credibilidade -->
-    <section class="credibility">
-        <div class="container">
-            <h2>Confiança e Segurança</h2>
-            <p>Na Hawle Bank, priorizamos a segurança e a confiança de nossos clientes.</p>
-            <div class="credibility-images">
-                <img src="images/security.jpg" alt="Segurança">
-                <img src="images/trust.jpg" alt="Confiança">
-                <img src="images/support.jpeg" alt="Suporte">
+<!-- Seção de Funcionalidades -->
+<section class="features">
+    <div class="container">
+        <h2>Nossos Serviços</h2>
+        <div class="features-list">
+            <div>
+                <h3>Conta Digital</h3>
+                <p>Abra sua conta digital de forma rápida e segura.</p>
+            </div>
+            <div>
+                <h3>Cartão de Crédito</h3>
+                <p>Cartão sem anuidade com diversos benefícios.</p>
+            </div>
+            <div>
+                <h3>Empréstimos</h3>
+                <p>Empréstimos com taxas competitivas e aprovação rápida.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Seção de Funcionalidades -->
-    <section class="features">
-        <div class="container">
-            <h2>Nossos Serviços</h2>
-            <div class="features-list">
-                <div>
-                    <h3>Conta Digital</h3>
-                    <p>Abra sua conta digital de forma rápida e segura.</p>
-                </div>
-                <div>
-                    <h3>Cartão de Crédito</h3>
-                    <p>Cartão sem anuidade com diversos benefícios.</p>
-                </div>
-                <div>
-                    <h3>Empréstimos</h3>
-                    <p>Empréstimos com taxas competitivas e aprovação rápida.</p>
-                </div>
-            </div>
+<section class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <h2>Entre em Contato</h2>
+            <p class="form-description">
+                Estamos aqui para ajudá-lo. Preencha o formulário abaixo e entraremos em contato o mais breve possível.
+            </p>
+            <form class="contact-form">
+                <input type="text" placeholder="Seu nome" required>
+                <input type="email" placeholder="Seu e-mail" required>
+                <input type="tel" placeholder="Seu telefone" required>
+                <textarea placeholder="Sua mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2>Entre em Contato</h2>
-                <p class="form-description">
-                    Estamos aqui para ajudá-lo. Preencha o formulário abaixo e entraremos em contato o mais breve possível.
-                </p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Seu nome" required>
-                    <input type="email" placeholder="Seu e-mail" required>
-                    <input type="tel" placeholder="Seu telefone" required>
-                    <textarea placeholder="Sua mensagem" required></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    
+<section class="social-media">
+    <h3>Siga-nos nas redes sociais</h3>
+    <div class="social-icons">
+        <a href="https://www.instagram.com/paulorohdenjr" target="_blank" title="Instagram">
+            <img src="images/instagram-icon.png" alt="Instagram">
+        </a>
+        <a href="https://www.twitter.com/rowhden" target="_blank" title="X (Twitter)">
+            <img src="images/twitter-icon.png" alt="X (Twitter)">
+        </a>
+        <a href="https://www.linkedin.com/in/paulo-rohden/" target="_blank" title="LinkedIn">
+            <img src="images/linkedin-icon.png" alt="LinkedIn">
+        </a>
+        <a href="https://www.tiktok.com/rowhden" target="_blank" title="TikTok">
+            <img src="images/tiktok-icon.png" alt="TikTok">
+        </a>
+    </div>
+</section>
 
-    <section class="social-media">
-        <h3>Siga-nos nas redes sociais</h3>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/paulorohdenjr" target="_blank" title="Instagram">
-                <img src="images/instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://www.twitter.com/rowhden" target="_blank" title="X (Twitter)">
-                <img src="images/twitter-icon.png" alt="X (Twitter)">
-            </a>
-            <a href="https://www.linkedin.com/in/paulo-rohden/" target="_blank" title="LinkedIn">
-                <img src="images/linkedin-icon.png" alt="LinkedIn">
-            </a>
-            <a href="https://www.tiktok.com/rowhden" target="_blank" title="TikTok">
-                <img src="images/tiktok-icon.png" alt="TikTok">
-            </a>
-        </div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2024 Hawle Bank. Todos os direitos reservados.</p>
-    </footer>
+<!-- Rodapé -->
+<footer>
+    <p>&copy; 2024 Hawle Bank. Todos os direitos reservados.</p>
+</footer>
 </body>
 </html>
