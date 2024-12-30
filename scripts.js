@@ -1,146 +1,139 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const introScreen = document.querySelector('.intro-screen'); // Tela inicial
-    const header = document.querySelector('header'); // Cabeçalho fixo
-    const navLinks = document.querySelectorAll('.nav-links a'); // Links do menu fixo
-    const hamburger = document.querySelector('.hamburger'); // Botão hambúrguer (mobile)
-    const menuOverlay = document.querySelector('.menu-overlay'); // Overlay do menu (mobile)
-    const logoLinks = document.querySelectorAll('.logo-link, .intro-logo-link'); // Links da logo
-    const logo = document.querySelector('.logo'); // Logo principal
-    const navIcons = document.querySelectorAll('.nav-icons img'); // Ícones da navbar
-    const navbar = document.querySelector('.navbar'); // Navbar principal
-    const body = document.body; // Corpo da página
-    const menuInicio = document.querySelector('.menu-overlay .inicio-link'); // Link do menu hambúrguer "Início"
-    let introHidden = false; // Controle para a tela inicial
+    const introScreen = document.querySelector('.intro-screen');
+    const header = document.querySelector('header');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const hamburger = document.querySelector('.hamburger');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const logoLinks = document.querySelectorAll('.logo-link, .intro-logo-link');
+    const logo = document.querySelector('.logo');
+    const navIcons = document.querySelectorAll('.nav-icons img');
+    const navbar = document.querySelector('.navbar');
+    const body = document.body;
+    const menuInicio = document.querySelector('.menu-overlay .inicio-link');
+    let introHidden = false;
 
-    // Função para esconder a tela inicial e mostrar o cabeçalho fixo
+    // Carousel variables
+    const carouselContainer = document.querySelector('.carousel-container');
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const prevButton = document.querySelector('.prev-slide');
+    const nextButton = document.querySelector('.next-slide');
+    let currentSlide = 0;
+
+    // Function to hide the intro screen
     function hideIntroScreen() {
         if (introScreen) {
-            introScreen.classList.add('hidden'); // Esconde a tela inicial
+            introScreen.classList.add('hidden');
         }
         if (header) {
-            header.classList.add('show'); // Mostra o cabeçalho fixo
+            header.classList.add('show');
         }
-        navLinks.forEach(link => link.style.display = 'flex'); // Garante que os links fiquem visíveis
-        introHidden = true; // Marca como escondido
+        navLinks.forEach(link => (link.style.display = 'flex'));
+        introHidden = true;
     }
 
-    // Função para reiniciar a página ao clicar na logo
-    if (logoLinks) {
-        logoLinks.forEach(logo => {
-            logo.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (introScreen) {
-                    introScreen.classList.remove('hidden'); // Mostra a tela inicial
-                }
-                if (header) {
-                    header.classList.remove('show'); // Esconde o cabeçalho fixo
-                }
-                navLinks.forEach(link => link.style.display = 'none'); // Esconde os links fixos
-                introHidden = false; // Marca como visível novamente
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Volta ao topo da página
-            });
-        });
-    }
-
-    // Evento de scroll
-    window.addEventListener('scroll', () => {
+    // Update navbar on scroll
+    function updateNavbarOnScroll() {
         const scrollY = window.scrollY;
 
         if (navbar) {
             if (scrollY > 50) {
-                // Quando a página for rolada para baixo
-                navbar.classList.add('scrolled'); // Adiciona classe para fundo azul
-                if (logo) {
-                    logo.src = 'images/logo-white.png'; // Alterar para logo escura
-                }
+                navbar.classList.remove('scrolled');
+                navbar.style.backgroundColor = '#fff';
+                if (logo) logo.src = 'images/logo-dark.png';
                 if (hamburger) {
-                    hamburger.querySelectorAll('span').forEach(span => {
-                        span.style.background = '#fff'; // Branco
-                    });
+                    hamburger.querySelectorAll('span').forEach(span => (span.style.background = '#000'));
                 }
-                navLinks.forEach(link => link.style.color = '#fff'); // Links em branco
-                navIcons.forEach(icon => {
-                    icon.style.filter = 'invert(1)'; // Ícones claros
-                });
+                navLinks.forEach(link => (link.style.color = '#000'));
+                navIcons.forEach(icon => (icon.style.filter = 'invert(0)'));
             } else {
-                // Quando a página volta para o topo
-                navbar.classList.remove('scrolled'); // Remove classe para fundo azul
-                if (logo) {
-                    logo.src = 'images/logo-dark.png'; // Alterar para logo clara
-                }
+                navbar.classList.add('scrolled');
+                navbar.style.backgroundColor = '#002BB5';
+                if (logo) logo.src = 'images/logo-white.png';
                 if (hamburger) {
-                    hamburger.querySelectorAll('span').forEach(span => {
-                        span.style.background = '#000'; // Preto
-                    });
+                    hamburger.querySelectorAll('span').forEach(span => (span.style.background = '#fff'));
                 }
-                navLinks.forEach(link => link.style.color = '#000'); // Links em preto
-                navIcons.forEach(icon => {
-                    icon.style.filter = 'invert(0)'; // Ícones escuros
-                });
+                navLinks.forEach(link => (link.style.color = '#fff'));
+                navIcons.forEach(icon => (icon.style.filter = 'invert(1)'));
             }
         }
+        if (scrollY > 0.2 && !introHidden) hideIntroScreen();
+    }
 
-        // Altere o valor para ajustar a sensibilidade do efeito
-        if (scrollY > 0.2 && !introHidden) {
-            hideIntroScreen(); // Esconde a tela inicial
-        }
-    });
+    // Carousel functions
+    function updateCarousel() {
+        const offset = -currentSlide * 100; // Calculate the offset for the current slide
+        carouselContainer.style.transform = `translateX(${offset}%)`;
+    }
 
-    // Botão hambúrguer no mobile
+    function showNextSlide() {
+        currentSlide = (currentSlide + 1) % carouselSlides.length; // Loop back to the first slide
+        updateCarousel();
+    }
+
+    function showPrevSlide() {
+        currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length; // Loop back to the last slide
+        updateCarousel();
+    }
+
+    // Auto-play functionality
+    function autoPlayCarousel() {
+        setInterval(showNextSlide, 5000); // Change slides every 5 seconds
+    }
+
+    // Event listeners for carousel controls
+    if (nextButton) nextButton.addEventListener('click', showNextSlide);
+    if (prevButton) prevButton.addEventListener('click', showPrevSlide);
+
+    // Start auto-play
+    autoPlayCarousel();
+
+    // Hamburger menu toggle
     if (hamburger && menuOverlay) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menuOverlay.classList.toggle('active');
-            body.classList.toggle('no-scroll'); // Adiciona ou remove a classe no-scroll
-
-            // Garante visibilidade dos links no menu mobile
-            if (menuOverlay.classList.contains('active')) {
-                navLinks.forEach(link => link.style.display = 'block'); // Exibe os links no menu mobile
-            } else {
-                navLinks.forEach(link => link.style.display = 'none'); // Esconde os links quando o menu é fechado
-            }
+            body.classList.toggle('no-scroll');
         });
     }
 
-    // Garantir visibilidade do menu correto ao redimensionar
+    // Resize event
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 769) {
-            navLinks.forEach(link => link.style.display = 'flex'); // Exibe os links no desktop
-            if (menuOverlay) {
-                menuOverlay.classList.remove('active'); // Reseta o overlay
-            }
-            if (hamburger) {
-                hamburger.classList.remove('active'); // Reseta o botão hambúrguer
-            }
-            body.classList.remove('no-scroll'); // Reativa o scroll
+            navLinks.forEach(link => (link.style.display = 'flex'));
+            if (menuOverlay) menuOverlay.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
+            body.classList.remove('no-scroll');
         } else {
-            navLinks.forEach(link => link.style.display = 'none'); // Esconde os links no mobile
+            navLinks.forEach(link => (link.style.display = 'none'));
         }
     });
 
-    // Configuração inicial para garantir que o menu está correto na primeira carga
+    // Initial configuration
     if (window.innerWidth >= 769) {
-        navLinks.forEach(link => link.style.display = 'flex'); // Exibe os links no desktop
+        navLinks.forEach(link => (link.style.display = 'flex'));
     } else {
-        navLinks.forEach(link => link.style.display = 'none'); // Esconde os links no mobile
+        navLinks.forEach(link => (link.style.display = 'none'));
     }
 
-    // Evento para logo principal levar ao topo da página
+    // Scroll to top on logo click
     if (logo) {
-        logo.addEventListener('click', (e) => {
+        logo.addEventListener('click', e => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Volta ao topo da página
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
-    // Evento para link "Início" no menu mobile
+    // Scroll to top on "Início" link click
     if (menuInicio) {
-        menuInicio.addEventListener('click', (e) => {
+        menuInicio.addEventListener('click', e => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Volta ao topo da página
-            menuOverlay.classList.remove('active'); // Fecha o menu hambúrguer
-            hamburger.classList.remove('active'); // Reseta o botão hambúrguer
-            body.classList.remove('no-scroll'); // Reativa o scroll
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            menuOverlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            body.classList.remove('no-scroll');
         });
     }
+
+    // Scroll event
+    window.addEventListener('scroll', updateNavbarOnScroll);
 });

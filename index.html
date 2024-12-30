@@ -68,23 +68,34 @@
 
 
     <!-- Carrossel -->
-    <section class="carousel">
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <img src="images/slide1.jpg" alt="Descrição da imagem 1">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/slide2.jpg" alt="Descrição da imagem 2">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/slide3.jpg" alt="Descrição da imagem 3">
-            </div>
+<section class="carousel" aria-label="Galeria de imagens">
+    <div class="carousel-container">
+        <!-- Slides -->
+        <div class="carousel-slide">
+            <img src="images/slide1.jpg" alt="Descrição da imagem 1">
         </div>
-        <div class="carousel-controls">
-            <button class="prev-slide">&larr;</button> <!-- Seta para a esquerda -->
-            <button class="next-slide">&rarr;</button> <!-- Seta para a direita -->
-        </div>        
-    </section>
+        <div class="carousel-slide">
+            <img src="images/slide2.jpg" alt="Descrição da imagem 2">
+        </div>
+        <div class="carousel-slide">
+            <img src="images/slide3.jpg" alt="Descrição da imagem 3">
+        </div>
+    </div>
+
+    <!-- Controles do Carrossel -->
+    <div class="carousel-controls">
+        <button class="prev-slide" aria-label="Slide anterior">&larr;</button>
+        <button class="next-slide" aria-label="Próximo slide">&rarr;</button>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+        <button class="indicator" data-slide="0" aria-label="Ir para o slide 1"></button>
+        <button class="indicator" data-slide="1" aria-label="Ir para o slide 2"></button>
+        <button class="indicator" data-slide="2" aria-label="Ir para o slide 3"></button>
+    </div>
+</section>
+
 
     <!-- Seção de Credibilidade -->
     <section class="credibility">

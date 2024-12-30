@@ -284,6 +284,8 @@ header.scrolled .nav-links a {
     overflow: hidden;
     background-color: var(--color-primary);
     margin: 0 auto;
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
 }
 
 .carousel-container {
@@ -302,6 +304,7 @@ header.scrolled .nav-links a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 10px; /* Mantém bordas arredondadas */
 }
 
 .carousel-controls {
@@ -311,21 +314,75 @@ header.scrolled .nav-links a {
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
+    pointer-events: none; /* Impede que controles interfiram na navegação de slides */
 }
 
 .carousel-controls button {
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: var(--color-white);
-    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Força a aplicação */
+    border: none !important;
+    color: var(--color-white) !important;
+    padding: 10px 15px;
     cursor: pointer;
     font-size: 1.5rem;
-    transition: background-color var(--transition);
+    transition: background-color 0.3s ease;
+    pointer-events: auto;
+    border-radius: 50%;
 }
 
-.carousel-controls button:hover {
+.carousel-controls button:hover,
+.carousel-controls button:focus {
     background-color: rgba(0, 0, 0, 0.8);
+    outline: none; /* Remove borda padrão do foco */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Destaque ao focar */
 }
+
+/* Indicadores do Carrossel */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-indicators button:hover,
+.carousel-indicators button:focus {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.2);
+}
+
+.carousel-indicators button.active {
+    background-color: var(--color-white); /* Indicador ativo */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .carousel {
+        height: calc(100vw / 1.8); /* Altura maior para mobile */
+    }
+
+    .carousel-controls button {
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+    }
+}
+
 
 /* Seção de Credibilidade */
 .credibility {
