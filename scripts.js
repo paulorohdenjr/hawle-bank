@@ -105,14 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             const isActive = menuOverlay.classList.toggle('active');
             hamburger.classList.toggle('active');
-            body.classList.toggle('no-scroll', isActive);
         });
 
         document.addEventListener('click', (e) => {
             if (menuOverlay.classList.contains('active') && !menuOverlay.contains(e.target) && !hamburger.contains(e.target)) {
                 menuOverlay.classList.remove('active');
                 hamburger.classList.remove('active');
-                body.classList.remove('no-scroll');
             }
         });
 
@@ -120,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth >= 768) {
                 menuOverlay.classList.remove('active');
                 hamburger.classList.remove('active');
-                body.classList.remove('no-scroll');
             }
         });
     }
@@ -140,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             menuOverlay.classList.remove('active');
             hamburger.classList.remove('active');
-            body.classList.remove('no-scroll');
         });
     }
 
