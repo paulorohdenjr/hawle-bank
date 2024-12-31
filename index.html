@@ -20,11 +20,6 @@
         </a>
         <!-- Adicionando o slogan -->
         <p class="intro-slogan">Conectando você ao futuro financeiro.</p>
-        <ul class="intro-links">
-            <li><a href="pages/em-obras.html">Sobre</a></li>
-            <li><a href="pages/em-obras.html">Produtos</a></li>
-            <li><a href="pages/em-obras.html">Solicitar Cartão</a></li>
-        </ul>
         <!-- Adicionando a seta animada -->
         <div class="scroll-indicator">
             <span class="arrow"></span>
@@ -32,29 +27,38 @@
     </div>
 </div>
 
+<!-- Modal de Boas-Vindas -->
+<div id="welcome-overlay" class="welcome-modal">
+    <div class="welcome-modal-content">
+        <h2>Bem-vindo!</h2>
+        <p>Este site é um projeto criado para meu portfólio pessoal. Desejo a todos um Feliz 2025! 😊</p>
+        <p>Se puderem compartilhar e deixar um like no stories, ficarei muito grato!</p>
+        <button id="close-welcome-overlay">Entendi</button>
+    </div>
+</div>
+
+
 <header>
     <nav class="navbar">
         <!-- Botão de menu hambúrguer (somente para mobile) -->
-        <button class="hamburger">
+        <button class="hamburger" aria-expanded="false" aria-label="Abrir menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        
-        <!-- Logo -->
-        <div class="nav-left">
-            <a href="index.html">
-                <img src="images/logo-white.png" alt="HW Logo" class="logo">
-            </a>
-        </div>
-        
-        <!-- Menu principal (aparece no desktop) -->
+
+        <!-- Logo diretamente no nav -->
+        <a href="index.html" class="logo-container">
+            <img src="images/logo-white.png" alt="HW Logo" class="logo">
+        </a>
+
+        <!-- Menu principal (desktop) -->
         <ul class="nav-links">
             <li><a href="pages/em-obras.html">Sobre</a></li>
             <li><a href="pages/em-obras.html">Produtos</a></li>
             <li><a href="pages/em-obras.html">Solicitar Cartão</a></li>
         </ul>
-        
+
         <!-- Ícones adicionais (desktop) -->
         <div class="nav-icons">
             <a href="pages/em-obras.html"><img src="images/search-icon.png" alt="Search Icon"></a>
@@ -80,6 +84,7 @@
             <button class="cta-button">Criar conta grátis</button>
         </div>
     </div>
+
 </header>
 
 <!-- Carrossel -->
@@ -106,7 +111,6 @@
             &raquo;
         </button>
     </div>
-
 
     <!-- Indicadores -->
     <div class="carousel-indicators">
@@ -182,14 +186,10 @@
 
             <div class="statistics">
                 <div class="stat-item" data-animation="slide-left">
-                    <h3>99%</h3>
-                    <p>Satisfação de Clientes</p>
-                </div>
-                <div class="stat-item" data-animation="slide-right">
                     <h3>10+ anos</h3>
                     <p>De Mercado</p>
                 </div>
-                <div class="stat-item" data-animation="slide-left">
+                <div class="stat-item" data-animation="slide-right">
                     <h3>20 países</h3>
                     <p>Com Presença Global</p>
                 </div>
