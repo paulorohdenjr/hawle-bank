@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.contact-form');
     const modal = document.getElementById('confirmation-modal');
     const closeModalButton = document.getElementById('close-modal');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const elements = document.querySelectorAll("[data-animation]");
     let currentSlide = 0; // Slide atual
     let introHidden = false; // Controle para a tela inicial
 
@@ -86,21 +88,25 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(showNextSlide, 5000); // Altera slides a cada 5 segundos
     }
 
-    // Botão hambúrguer no mobile
     if (hamburger && menuOverlay) {
         hamburger.addEventListener('click', () => {
+            const isActive = menuOverlay.classList.toggle('active');
             hamburger.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            body.classList.toggle('no-scroll'); // Adiciona ou remove a classe no-scroll
-
-            // Garante visibilidade dos links no menu mobile
-            if (menuOverlay.classList.contains('active')) {
-                navLinks.forEach(link => link.style.display = 'block'); // Exibe os links no menu mobile
-            } else {
-                navLinks.forEach(link => link.style.display = 'none'); // Esconde os links quando o menu é fechado
+            body.classList.toggle('no-scroll', isActive); // Adiciona ou remove a classe no-scroll
+            hamburger.setAttribute('aria-expanded', isActive); // Atualiza o estado ARIA
+        });
+    
+        // Fecha o menu ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (menuOverlay.classList.contains('active') && !menuOverlay.contains(e.target) && !hamburger.contains(e.target)) {
+                menuOverlay.classList.remove('active');
+                hamburger.classList.remove('active');
+                body.classList.remove('no-scroll');
+                hamburger.setAttribute('aria-expanded', 'false');
             }
         });
     }
+    
 
     // Garantir visibilidade do menu correto ao redimensionar
     window.addEventListener('resize', () => {
@@ -217,7 +223,32 @@ document.addEventListener('DOMContentLoaded', () => {
         indicator.addEventListener('click', () => {
             updateCarousel(index);
         });
-    })    
+    })   
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            // Fecha outras respostas abertas
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            // Alterna a visibilidade da resposta clicada
+            item.classList.toggle('active');
+        });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animated");
+                observer.unobserve(entry.target); // Para evitar reativação
+            }
+        });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => observer.observe(el));
 
     // Inicializa o autoplay
     autoPlayCarousel();

@@ -125,32 +125,33 @@ header.scrolled .nav-links a {
     padding: 0 20px;
 }
 
-/* Estilo do Botão Hambúrguer */
 .hamburger {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
+    position: fixed; /* Para garantir que o botão fique no topo */
+    top: 15px; /* Ajuste conforme necessário */
+    left: 15px; /* Ajuste conforme necessário */
+    z-index: 2000; /* Certifique-se de que está acima de outros elementos */
+    display: flex; /* Garante que as linhas do botão estejam visíveis */
     flex-direction: column;
     justify-content: space-between;
     height: 24px;
     width: 30px;
-    z-index: 2000;
-    position: relative;
+    background: none; /* Remove qualquer fundo indesejado */
+    border: none;
+    cursor: pointer;
 }
 
 .hamburger span {
     display: block;
-    height: 3px; /* Altura da linha */
-    width: 100%; /* Largura completa */
-    background: var(--color-white);
+    height: 3px;
+    width: 100%;
+    background: var(--color-white); /* Linha branca */
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Animação quando o menu está ativo */
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(5px, 5px); /* Forma a barra superior */
+    background: var(--color-white); /* Cor branca */
 }
 
 .hamburger.active span:nth-child(2) {
@@ -158,8 +159,10 @@ header.scrolled .nav-links a {
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(5px, -5px); /* Forma a barra inferior */
+    background: var(--color-white); /* Cor branca */
 }
+
 
 .navbar {
     display: flex;
@@ -168,6 +171,7 @@ header.scrolled .nav-links a {
     padding: 10px 15px;
     height: auto;
     background-color: var(--color-bg); /* Fundo azul */
+    z-index: 1000; /* Certifique-se de que o header esteja acima */
 }
 
 .navbar.scrolled {
@@ -229,23 +233,216 @@ header.scrolled .nav-links a {
     color: var(--color-white);
 }
 
-/* Menu mobile */
 .menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-bg);
-    justify-content: center;
-    align-items: center;
+    display: flex;
     flex-direction: column;
-    z-index: 1500;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: flex-start; /* Mantém alinhado à esquerda */
+    padding: 20px; /* Espaçamento interno */
+    height: 100vh; /* Garante que o menu ocupe toda a altura da tela */
 }
 
-.menu-overlay.active {
+.menu-overlay ul.nav-links.mobile {
+    list-style: none; /* Remove marcadores */
+    margin: 20px; /* Espaçamento externo ao redor da borda */
+    padding: 10px; /* Espaçamento interno */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Adiciona borda */
+    border-radius: 8px; /* Bordas arredondadas */
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil para destacar */
+    width: 100%; /* Garante que ocupe toda a largura disponível */
+    box-sizing: border-box; /* Inclui bordas no cálculo do tamanho total */
+}
+
+/* Estilo dos itens do menu */
+.menu-overlay ul.nav-links.mobile li {
+    margin: 15px 0; /* Espaçamento entre os itens */
+    border-bottom: 2px solid #fff; /* Linha branca */
+}
+
+.menu-overlay ul.nav-links.mobile li:last-child {
+    border-bottom: 2px solid #fff; /* Linha branca somente em Contato */
+}
+
+/* Links dentro do menu */
+.menu-overlay ul.nav-links.mobile li a {
+    text-decoration: none;
+    color: #fff !important; /* Força a cor branca */
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: block;
+    width: 100%; /* Faz o link ocupar toda a largura */
+    padding: 10px 0; /* Espaçamento interno */
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-overlay ul.nav-links.mobile li a:hover {
+    color: #FFD700; /* Efeito hover */
+}
+
+/* Botões no menu overlay */
+.menu-overlay .cta-buttons {
     display: flex;
+    flex-direction: column; /* Exibe botões em coluna */
+    gap: 15px; /* Espaçamento entre botões */
+    margin: 20px 20px; /* Espaçamento entre o último link e os botões */
+}
+
+.menu-overlay .cta-buttons button {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+/* Primeiro botão estilo preenchido */
+.menu-overlay .cta-buttons .btn-primary {
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+}
+
+.menu-overlay .cta-buttons .btn-primary:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Segundo botão estilo outline */
+.menu-overlay .cta-buttons .btn-outline {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.menu-overlay .cta-buttons .btn-outline:hover {
+    background-color: #FFD700;
+    color: #000;
+}
+
+/* Espaçamento entre o último link e os botões */
+.menu-overlay ul.nav-links.mobile + .cta-buttons {
+    margin-top: 30px;
+}
+
+/* Cabeçalho do Menu */
+.menu-header {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.menu-logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+/* Simplificação da tagline */
+.menu-tagline {
+    font-size: 1.2rem; /* Tamanho do texto */
+    font-weight: 500; /* Peso médio */
+    color: #fff; /* Cor dourada */
+    text-align: left; /* Alinha à esquerda */
+    margin: 20px 20px; /* Espaçamento interno */
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover dinâmico */
+.menu-tagline:hover {
+    background: rgba(255, 255, 255, 0.2); /* Torna o fundo mais visível */
+    color: #FFD700; /* Muda o texto para dourado */
+    transform: scale(1.05); /* Leve aumento */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); /* Intensifica a sombra */
+}
+
+/* Links do Menu */
+.nav-links.mobile {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.nav-links.mobile li {
+    margin: 15px 0;
+}
+
+.nav-links.mobile a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links.mobile a:hover {
+    color: #FFD700;
+}
+
+.menu-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+
+/* Botão de "Criar conta grátis" */
+.cta-button {
+    background-color: transparent; /* Fundo transparente */
+    color: #fff; /* Texto branco */
+    border: 2px solid #fff; /* Traçado branco */
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    max-width: 300px; /* Define um limite máximo de largura */
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #FFD700; /* Fundo dourado no hover */
+    color: #fff; /* Texto azul no hover */
+    transform: scale(1.05); /* Efeito de crescimento */
+    border-color: #FFD700; /* Traçado dourado no hover */
+}
+
+/* Botão de "Acessar minha conta" */
+.login-link {
+    display: inline-block;
+    background-color: #fff; /* Fundo dourado */
+    color: #002BB5; /* Texto azul */
+    border: 2px solid #fff; /* Traçado dourado */
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    max-width: 300px; /* Define um limite máximo de largura */
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.login-link:hover {
+    background-color: #FFD700; /* Fundo azul no hover */
+    color: #fff; /* Texto dourado no hover */
+    transform: scale(1.05); /* Efeito de crescimento */
+    border-color: #FFD700; /* Traçado dourado no hover */
 }
 
 /* Ícones adicionais */
@@ -279,8 +476,10 @@ header.scrolled .nav-links a {
     overflow: hidden;
     background-color: var(--color-primary);
     margin: 20px auto;
-    border-radius: 15px; /* Bordas arredondadas mais suaves */
+   
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra aprimorada */
+    margin-top: 100px; /* Adicione um espaçamento no topo */
+    z-index: 1; /* Mantenha o carrossel abaixo do header */
 }
 
 .carousel-container {
@@ -299,7 +498,9 @@ header.scrolled .nav-links a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px; /* Mantém bordas arredondadas */
+    
+    max-height: 100%; /* Certifique-se de que a imagem não ultrapasse o limite */
+    margin-top: 0; /* Ajuste qualquer margem superior */
 }
 
 /* Controles do Carrossel */
@@ -949,14 +1150,139 @@ footer p {
     }
 }
 
-/* Slogan */
-.intro-slogan {
-    color: var(--color-white);
-    font-size: 1.2rem; /* Reduzindo o tamanho da fonte */
-    margin: 10px 0; /* Diminuindo o espaçamento abaixo da logo */
-    font-weight: 400;
-    text-align: center;
+
+
+/* Tela inicial */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #002BB5, #0056b3); /* Gradiente moderno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 1s ease-in-out; /* Animação ao carregar */
 }
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Conteúdo centralizado */
+.intro-content {
+    text-align: center;
+    color: var(--color-white);
+}
+
+/* Logo com efeito ao passar o mouse */
+.intro-logo {
+    width: 150px;
+    margin-bottom: 20px;
+    animation: logoBounce 2s infinite; /* Efeito bounce */
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.intro-logo:hover {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+}
+
+/* Animação de bounce */
+@keyframes logoBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Slogan com destaque */
+.intro-slogan {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff; /* Dourado para contraste */
+    margin-bottom: 30px;
+    animation: fadeInUp 1.5s ease;
+}
+
+/* Links do menu inicial */
+.intro-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.intro-links li a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.intro-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #FFD700; /* Sublinhado dourado */
+    transition: width 0.3s ease;
+}
+
+.intro-links li a:hover {
+    color: #FFD700;
+}
+
+.intro-links li a:hover::after {
+    width: 100%;
+}
+
+/* Seta animada */
+.scroll-indicator {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.scroll-indicator .arrow {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: solid var(--color-white);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    animation: bounceArrow 1.5s infinite;
+}
+
+/* Animação da seta */
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: rotate(45deg) translateY(0);
+    }
+    50% {
+        transform: rotate(45deg) translateY(10px);
+    }
+}
+
 
 /* Indicador de scroll */
 .scroll-indicator {
@@ -993,6 +1319,298 @@ footer p {
 .feature-card {
     flex: 0 0 100%;
 }
+
+/* Estilo da seção de destaque */
+.highlight-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    text-align: center;
+    background-color: #002BB5;
+    color: #fff;
+    padding: 20px;
+}
+
+.highlight-content {
+    z-index: 2;
+    max-width: 800px;
+    animation: fadeIn 1.5s ease;
+}
+
+.highlight-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.highlight-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.highlight-content .cta-highlight {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #FFD700;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.highlight-content .cta-highlight:hover {
+    background-color: #fff;
+    color: #002BB5;
+    transform: scale(1.1);
+}
+
+.highlight-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.highlight-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+/* Seção de Cards Animados */
+.animated-cards {
+    padding: 50px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 250px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.faq-section {
+    padding: 60px 20px;
+    background-color: #f1f1f1;
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #002BB5;
+}
+
+.faq {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
+
+.faq-question {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #0056b3;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px 0;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: #0056b3;
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .icon {
+    transform: rotate(45deg);
+}
+
+/* Animação de fade-in para a resposta */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.social-proof-dynamic {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #002BB5, #0056E3);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.social-proof-dynamic h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.social-proof-dynamic .subtitle {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.social-proof-dynamic .highlight {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.stat-item {
+    text-align: center;
+    opacity: 0; /* Para animação */
+    transform: translateX(-100px);
+    transition: all 0.8s ease;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFD700;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.testimonials {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.testimonial {
+    max-width: 300px;
+    text-align: left;
+    font-style: italic;
+    opacity: 0; /* Para animação */
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.testimonial blockquote {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.testimonial .author {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+/* Efeitos de animação */
+[data-animation="slide-left"] {
+    transform: translateX(-100px);
+}
+
+[data-animation="slide-right"] {
+    transform: translateX(100px);
+}
+
+[data-animation="fade-in"] {
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+/* Animação ativada */
+.animated {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+}
+
+
 
 /* Animação da seta */
 @keyframes bounce {
