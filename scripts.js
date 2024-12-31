@@ -12,8 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuInicio = document.querySelector('.menu-overlay .inicio-link'); // Link do menu hambúrguer "Início"
     const carouselContainer = document.querySelector('.carousel-container'); // Container do carrossel
     const carouselSlides = document.querySelectorAll('.carousel-slide'); // Slides do carrossel
+    const indicators = document.querySelectorAll('.carousel-indicators button');
     const prevButton = document.querySelector('.prev-slide'); // Botão anterior
     const nextButton = document.querySelector('.next-slide'); // Botão próximo
+    const footerLogo = document.querySelector('.footer-logo-animated');
+    const phoneInput = document.getElementById('phone');
+    const form = document.querySelector('.contact-form');
+    const modal = document.getElementById('confirmation-modal');
+    const closeModalButton = document.getElementById('close-modal');
     let currentSlide = 0; // Slide atual
     let introHidden = false; // Controle para a tela inicial
 
@@ -142,7 +148,78 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nextButton) nextButton.addEventListener('click', showNextSlide);
     if (prevButton) prevButton.addEventListener('click', showPrevSlide);
 
-    // Inicia o autoplay do carrossel
+    if (footerLogo) {
+        // Adiciona o efeito ao passar o mouse
+        footerLogo.addEventListener('mouseenter', () => {
+            footerLogo.style.transform = 'scale(1.1) rotate(5deg)';
+            footerLogo.style.filter = 'brightness(1.5)';
+            footerLogo.style.opacity = '0.9';
+        });
+
+        // Remove o efeito ao sair do mouse
+        footerLogo.addEventListener('mouseleave', () => {
+            footerLogo.style.transform = 'scale(1) rotate(0deg)';
+            footerLogo.style.filter = 'brightness(1)';
+            footerLogo.style.opacity = '1';
+        });
+    }
+
+    // Máscara para o telefone
+    phoneInput.addEventListener('input', (event) => {
+        let value = event.target.value.replace(/\D/g, '');
+        if (value.length > 0) {
+            value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+        }
+        event.target.value = value;
+    });
+
+    // Exibe o modal ao enviar o formulário
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+    });
+
+    // Fecha o modal ao clicar no botão "Fechar"
+    closeModalButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+        form.reset(); // Reseta o formulário
+    });
+
+    // Fecha o modal ao clicar fora do conteúdo
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            form.reset();
+        }
+    });
+
+    // Função para resetar a transformação após o clique
+    function resetButtonState(button) {
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 200); // Tempo para resetar o estado (0.2s)
+        }
+
+    // Eventos de controle do carrossel
+    prevButton?.addEventListener('click', () => {
+        showPrevSlide();
+        prevButton.style.transform = 'scale(0.9)';
+        setTimeout(() => prevButton.style.transform = 'scale(1)', 150);
+    });
+
+    nextButton?.addEventListener('click', () => {
+        showNextSlide();
+        nextButton.style.transform = 'scale(0.9)';
+        setTimeout(() => nextButton.style.transform = 'scale(1)', 150);
+    });
+
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            updateCarousel(index);
+        });
+    })    
+
+    // Inicializa o autoplay
     autoPlayCarousel();
 
     // Evento de scroll

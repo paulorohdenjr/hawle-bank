@@ -89,11 +89,16 @@
         </div>
     </div>
 
-    <!-- Controles do Carrossel -->
+        <!-- Controles do Carrossel -->
     <div class="carousel-controls">
-        <button class="prev-slide" aria-label="Slide anterior">&larr;</button>
-        <button class="next-slide" aria-label="Próximo slide">&rarr;</button>
+        <button class="prev-slide" aria-label="Slide anterior">
+            &laquo;
+        </button>
+        <button class="next-slide" aria-label="Próximo slide">
+            &raquo;
+        </button>
     </div>
+
 
     <!-- Indicadores -->
     <div class="carousel-indicators">
@@ -106,12 +111,17 @@
 <!-- Seção de Credibilidade -->
 <section class="credibility">
     <div class="container">
-        <h2>Confiança e Segurança</h2>
-        <p>Na Hawle Bank, priorizamos a segurança e a confiança de nossos clientes.</p>
-        <div class="credibility-images">
-            <img src="images/security.jpg" alt="Segurança">
-            <img src="images/trust.jpg" alt="Confiança">
-            <img src="images/support.jpeg" alt="Suporte">
+        <div class="credibility-content">
+            <div class="credibility-text">
+                <h2>Confiança e Segurança</h2>
+                <p>
+                    Sua segurança é nossa prioridade. Garantimos soluções modernas que trazem tranquilidade e confiança em cada transação financeira.
+                </p>
+                <a href="pages/em-obras.html" class="cta-link">Saiba mais &rarr;</a>
+            </div>
+            <div class="credibility-image">
+                <img src="images/security.jpg" alt="Segurança avançada">
+            </div>
         </div>
     </div>
 </section>
@@ -119,23 +129,39 @@
 <!-- Seção de Funcionalidades -->
 <section class="features">
     <div class="container">
-        <h2>Nossos Serviços</h2>
+        <h2>O futuro está aqui com a Hawle Bank.</h2>
         <div class="features-list">
-            <div>
+            <!-- Conta Digital -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="images/digital-account-icon.png" alt="Ícone Conta Digital">
+                </div>
                 <h3>Conta Digital</h3>
                 <p>Abra sua conta digital de forma rápida e segura.</p>
+                <a href="pages/em-obras.html" class="cta-link">Saiba mais &rarr;</a>
             </div>
-            <div>
+            <!-- Cartão de Crédito -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="images/credit-card-icon.png" alt="Ícone Cartão de Crédito">
+                </div>
                 <h3>Cartão de Crédito</h3>
                 <p>Cartão sem anuidade com diversos benefícios.</p>
+                <a href="pages/em-obras.html" class="cta-link">Saiba mais &rarr;</a>
             </div>
-            <div>
+            <!-- Empréstimos -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="images/loan-icon.png" alt="Ícone Empréstimos">
+                </div>
                 <h3>Empréstimos</h3>
                 <p>Empréstimos com taxas competitivas e aprovação rápida.</p>
+                <a href="pages/em-obras.html" class="cta-link">Saiba mais &rarr;</a>
             </div>
         </div>
     </div>
 </section>
+
 
 <section class="contact">
     <div class="container">
@@ -144,38 +170,98 @@
             <p class="form-description">
                 Estamos aqui para ajudá-lo. Preencha o formulário abaixo e entraremos em contato o mais breve possível.
             </p>
+            <!-- Mensagem de Segurança -->
             <form class="contact-form">
-                <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu e-mail" required>
-                <input type="tel" placeholder="Seu telefone" required>
-                <textarea placeholder="Sua mensagem" required></textarea>
+                <input type="text" placeholder="Digite seu nome completo" required>
+                <input type="email" placeholder="Digite seu e-mail válido (ex: exemplo@email.com)" required>
+                <input type="tel" id="phone" placeholder="Digite o número de telefone" required>
+                <textarea placeholder="Escreva sua mensagem com detalhes para que possamos ajudar" required></textarea>
+                <p class="security-message">
+                    Seus dados estarão seguros e serão utilizados apenas para este atendimento.
+                </p>
                 <button type="submit">Enviar</button>
             </form>
         </div>
     </div>
 </section>
 
-<section class="social-media">
-    <h3>Siga-nos nas redes sociais</h3>
-    <div class="social-icons">
-        <a href="https://www.instagram.com/paulorohdenjr" target="_blank" title="Instagram">
-            <img src="images/instagram-icon.png" alt="Instagram">
-        </a>
-        <a href="https://www.twitter.com/rowhden" target="_blank" title="X (Twitter)">
-            <img src="images/twitter-icon.png" alt="X (Twitter)">
-        </a>
-        <a href="https://www.linkedin.com/in/paulo-rohden/" target="_blank" title="LinkedIn">
-            <img src="images/linkedin-icon.png" alt="LinkedIn">
-        </a>
-        <a href="https://www.tiktok.com/rowhden" target="_blank" title="TikTok">
-            <img src="images/tiktok-icon.png" alt="TikTok">
-        </a>
+<!-- Modal de Confirmação -->
+<div class="modal" id="confirmation-modal">
+    <div class="modal-content">
+        <h2>Mensagem Enviada!</h2>
+        <p>Nosso time entrará em contato com você o mais breve possível. (Isso é um teste dãr)</p>
+        <button id="close-modal">Fechar</button>
     </div>
-</section>
+</div>
 
-<!-- Rodapé -->
-<footer>
-    <p>&copy; 2024 Hawle Bank. Todos os direitos reservados.</p>
+<footer class="site-footer">
+    <div class="footer-container">
+
+        <!-- Logo -->
+        <div class="footer-logo-container">
+            <img src="images/logo-white.png" alt="HW Logo" class="footer-logo-animated">
+        </div>
+
+        <!-- Colunas de links -->
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Atendimento ao Cliente</h3>
+                <ul>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="mailto:suporte@hawlebank.com.br">suporte@hawlebank.com.br</a></li>
+                    <li><a href="#">Ouvidoria</a></li>
+                    <li><a href="#">Denunciar Fraude</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Nossos Serviços</h3>
+                <ul>
+                    <li><a href="#">Abertura de Conta</a></li>
+                    <li><a href="#">Cartão de Crédito</a></li>
+                    <li><a href="#">Pagamentos e Transferências</a></li>
+                    <li><a href="#">Investimentos</a></li>
+                    <li><a href="#">Empréstimos</a></li>
+                    <li><a href="#">Financiamentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Informações Legais</h3>
+                <ul>
+                    <li><a href="#">Termos e Condições</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Segurança da Informação</a></li>
+                    <li><a href="#">Tarifas e Taxas</a></li>
+                    <li><a href="#">Relatórios Anuais</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Hawle Bank</h3>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                    <li><a href="#">Parcerias</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Aplicativo</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Linha de Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hawle Bank. Todos os direitos reservados.</p>
+            <p>Av. Nome Ficticio, XXX - Costa e Silva, Joinville - SC, XXXXX-XXX. Caixa Postal: XXXX - CEP: XXXXX-XXX</p>
+        </div>
+
+        <!-- Redes Sociais -->
+        <div class="footer-social">
+            <a href="https://github.com/paulorohdenjr"><img src="images/github-icon.png" alt="GitHub"></a>
+            <a href="https://www.instagram.com/paulorohdenjr/"><img src="images/instagram-icon.png" alt="Instagram"></a>
+            <a href="https://www.linkedin.com/in/paulo-rohden/"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="https://x.com/rowhden"><img src="images/twitter-icon.png" alt="Twitter"></a>
+        </div>
+    </div>
 </footer>
+
 </body>
 </html>
