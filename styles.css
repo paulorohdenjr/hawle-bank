@@ -116,8 +116,8 @@ header, .navbar {
     left: 0;
     width: 100%;
     background-color: #002BB5; /* Cor de fundo do header */
-    z-index: 1000; /* Certifique-se de que está acima de outros elementos */
-    border-bottom: 1px solid #ccc; /* Opcional: borda inferior para destaque */
+    z-index: 1000; 
+    border-bottom: 1px solid #ccc; 
 }
 
 header.scrolled {
@@ -141,16 +141,16 @@ header.scrolled .nav-links a {
 }
 
 .hamburger {
-    position: fixed; /* Para garantir que o botão fique no topo */
-    top: 15px; /* Ajuste conforme necessário */
-    left: 15px; /* Ajuste conforme necessário */
-    z-index: 2001; /* Certifique-se de que está acima de outros elementos */
-    display: flex; /* Garante que as linhas do botão estejam visíveis */
+    position: fixed; 
+    top: 15px; 
+    left: 15px; 
+    z-index: 2001;
+    display: flex; 
     flex-direction: column;
     justify-content: space-between;
     height: 24px;
     width: 30px;
-    background: none; /* Remove qualquer fundo indesejado */
+    background: none; 
     border: none;
     cursor: pointer;
 }
@@ -183,7 +183,7 @@ header.scrolled .nav-links a {
     padding: 10px 15px;
     height: auto;
     background-color: var(--color-bg); /* Fundo azul */
-    z-index: 1000; /* Certifique-se de que o header esteja acima */
+    z-index: 1000; 
 }
 
 .navbar.scrolled {
@@ -478,10 +478,10 @@ header.scrolled .nav-links a {
     height: calc(100vw / 2.8);
     max-height: 650px;
     overflow: hidden;
-    background-color: var(--color-primary); /* Fundo azul */
-    margin: 0; /* Remove a margem superior e inferior */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Sombra aprimorada */
-    z-index: 1; /* Mantenha o carrossel abaixo do header */
+    background-color: var(--color-primary); 
+    margin: 0; 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
+    z-index: 1; 
 }
 
 .carousel-container {
@@ -500,8 +500,8 @@ header.scrolled .nav-links a {
     width: 100%;
     height: 100%;
     object-fit: cover;    
-    max-height: 100%; /* Certifique-se de que a imagem não ultrapasse o limite */
-    margin-top: 0; /* Ajuste qualquer margem superior */
+    max-height: 100%; 
+    margin-top: 0; 
 }
 
 .carousel-controls {
@@ -510,43 +510,43 @@ header.scrolled .nav-links a {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Centraliza os botões verticalmente */
+    align-items: center; 
     transform: translateY(-50%);
-    pointer-events: none; /* Previne interferência em outros elementos */
+    pointer-events: none; 
     z-index: 10;
 }
 
 .carousel-controls button {
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco translúcido */
+    background-color: rgba(255, 255, 255, 0.8); 
     border: none;
-    color: #002BB5; /* Cor azul para o ícone */
-    width: 40px; /* Largura ajustada */
-    height: 40px; /* Altura ajustada */
+    color: #002BB5; 
+    width: 40px; 
+    height: 40px; 
     font-size: 1.2rem;
-    font-weight: bold; /* Deixa o ícone mais destacado */
+    font-weight: bold; 
     cursor: pointer;
-    border-radius: 10%; /* Deixa os botões levemente arredondados */
-    pointer-events: auto; /* Garante clicabilidade */
+    border-radius: 10%; 
+    pointer-events: auto; 
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    backdrop-filter: blur(4px); /* Adiciona efeito de desfoque */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra para profundidade */
+    backdrop-filter: blur(4px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
 }
 
 .carousel-controls button:hover,
 .carousel-controls button:focus {
-    transform: scale(1.2); /* Efeito de zoom ao interagir */
-    box-shadow: 0 0 15px rgba(0, 43, 181, 0.7); /* Sombra azul */
-    background-color: rgba(0, 43, 181, 0.9); /* Fundo azul sólido */
-    color: #fff; /* Texto branco ao hover */
-    outline: none; /* Remove borda padrão */
+    transform: scale(1.2); 
+    box-shadow: 0 0 15px rgba(0, 43, 181, 0.7); 
+    background-color: rgba(0, 43, 181, 0.9);
+    color: #fff; 
+    outline: none; 
 }
 
 /* Ícones alinhados */
 .carousel-controls button::before {
-    content: ''; /* Limpa o conteúdo padrão, caso necessário */
+    content: ''; 
 }
 
 /* Indicadores do Carrossel */
@@ -592,7 +592,6 @@ header.scrolled .nav-links a {
     border-radius: 8px;
     backdrop-filter: blur(4px);
 }
-
 
 /* Estilo do Footer */
 .site-footer {
@@ -679,7 +678,7 @@ header.scrolled .nav-links a {
 .footer-logo-animated:hover {
     transform: scale(1.1) rotate(5deg); /* Amplia e inclina ao passar o mouse */
     filter: brightness(1.5); /* Aumenta o brilho */
-    opacity: 0.9; /* Torna um pouco mais translúcido */
+    opacity: 0.9; 
 }
 
 
@@ -1153,25 +1152,25 @@ footer p {
     /* Botão hambúrguer no lado esquerdo */
     .hamburger {
         display: flex;
-        flex-direction: column; /* Organiza as linhas verticalmente */
-        justify-content: center; /* Centraliza as linhas verticalmente */
-        width: 30px; /* Largura do botão */
-        height: 35px; /* Altura ajustada */
+        flex-direction: column; 
+        justify-content: center; 
+        width: 30px; 
+        height: 35px; 
         background: none;
         border: none;
         cursor: pointer;
-        z-index: 2001; /* Certifica-se de que está acima do overlay */
+        z-index: 2001; 
         
     }
 
 
     /* Linhas do botão hambúrguer */
     .hamburger span {
-        background-color: #fff; /* Cor branca para as linhas */
-        height: 4px; /* Altura das linhas */
-        width: 100%; /* Largura total do botão */
-        margin: 3px 0; /* Espaçamento entre as linhas */
-        border-radius: 2px; /* Bordas arredondadas */
+        background-color: #fff; 
+        height: 4px; 
+        width: 100%;
+        margin: 3px 0; 
+        border-radius: 2px;
         transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
     }   
 
@@ -1214,11 +1213,11 @@ footer p {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #002BB5; /* Fundo azul */
-        z-index: 1500; /* Menu overlay fica abaixo do botão hambúrguer */
-        flex-direction: column; /* Itens em coluna */
-        justify-content: center; /* Centraliza verticalmente */
-        align-items: center; /* Centraliza horizontalmente */
+        background-color: #002BB5; 
+        z-index: 1500; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
         opacity: 0;
         transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     }
@@ -1263,18 +1262,18 @@ footer p {
     }
 
     .nav-icons {
-        display: flex; /* Garante que os ícones continuem visíveis */
-        position: absolute; /* Posiciona os ícones no lado direito */
-        right: 15px; /* Ajusta a distância da borda direita */
-        top: 20px; /* Ajusta a distância do topo */
-        gap: 10px; /* Espaçamento entre os ícones */
-        margin: 0; /* Remove margens indesejadas */
-        padding: 0; /* Remove padding desnecessário */
+        display: flex; 
+        position: absolute; 
+        right: 15px; 
+        top: 20px; 
+        gap: 10px; 
+        margin: 0; 
+        padding: 0; 
     }
 
     /* Garante que os ícones fiquem alinhados corretamente */
     .nav-icons img {
-        width: 24px; /* Tamanho dos ícones */
+        width: 24px; 
         height: 24px;
     }
 }
@@ -1416,7 +1415,7 @@ footer p {
 
 /* Indicador de scroll */
 .scroll-indicator {
-    margin-top: 40px; /* Aumentando a distância da seta para os links */
+    margin-top: 40px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1794,13 +1793,13 @@ footer p {
     }
 
     .nav-icons {
-        display: flex; /* Garante que os ícones continuem visíveis */
-        position: absolute; /* Posiciona os ícones no lado direito */
-        right: 15px; /* Ajusta a distância da borda direita */
-        top: 25px; /* Ajusta a distância do topo */
-        gap: 10px; /* Espaçamento entre os ícones */
-        margin: 0; /* Remove margens indesejadas */
-        padding: 0; /* Remove padding desnecessário */
+        display: flex; 
+        position: absolute;
+        right: 15px; 
+        top: 25px; 
+        gap: 10px;
+        margin: 0; 
+        padding: 0; 
     }
 
     .logo {
